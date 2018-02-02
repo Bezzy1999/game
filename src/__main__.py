@@ -17,7 +17,7 @@ def main():
     objects = []
     objects.append(gameObject('./art/ballGrey.png', startpos=(320, 368)))
     
-    paddle = gameObject('./art/paddleBlu.png', startpos=(320, 400))
+    paddle = gameObject('./art/paddleBlu.png', startpos=(320, 440))
     objects.append(paddle)
 
     level = levels.createLevel(levels.levels[0])
@@ -32,8 +32,10 @@ def main():
         key = pygame.key.get_pressed()
         if key[pygame.K_LEFT]:
             paddle.move([-3, 0])
+            paddle.rect.x = max(paddle.rect.x, 33)
         if key[pygame.K_RIGHT]:
             paddle.move([3, 0])
+            paddle.rect.x = min(paddle.rect.x, 503)
 
         for obj in objects:
             obj.draw(screen)
