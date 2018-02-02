@@ -2,15 +2,16 @@ import pygame
 
 class gameObject(object):
     def __init__(self, bitmap=None, startpos=None):
-        self.speed = [0, 0]
 
         if bitmap:
             self.image = pygame.image.load(bitmap)
             self.rect = self.image.get_rect()
+            self.rect.x = startpos[0]
+            self.rect.y = startpos[1]
 
-    def move(self):
+    def move(self, speed):
         if self.rect:
-            self.rect = self.rect.move(self.speed)
+            self.rect = self.rect.move(speed)
 
     def draw(self, screen):
         if self.rect:

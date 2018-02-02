@@ -15,8 +15,10 @@ def main():
     screen = pygame.display.set_mode((640, 480))
 
     objects = []
-    objects.append(gameObject('./art/ballGrey.png'))
-    objects.append(gameObject('./art/paddleBlu.png'))
+    objects.append(gameObject('./art/ballGrey.png', startpos=(320, 368)))
+    
+    paddle = gameObject('./art/paddleBlu.png', startpos=(320, 400))
+    objects.append(paddle)
 
     while True:
         for event in pygame.event.get():
@@ -24,8 +26,13 @@ def main():
 
         screen.fill(black)
 
+        key = pygame.key.get_pressed()
+        if key[pygame.K_LEFT]:
+            paddle.move([-3, 0])
+        if key[pygame.K_RIGHT]:
+            paddle.move([3, 0])
+
         for obj in objects:
-            obj.move()
             obj.draw(screen)
 
         pygame.display.flip()
