@@ -1,7 +1,7 @@
 import sys
 import pygame
 
-from levels import levels
+import levels
 from gameobject import gameObject
 
 black = 0, 0, 0
@@ -20,11 +20,14 @@ def main():
     paddle = gameObject('./art/paddleBlu.png', startpos=(320, 400))
     objects.append(paddle)
 
+    level = levels.createLevel(levels.levels[0])
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
 
         screen.fill(black)
+        levels.drawLevel(level, screen)
 
         key = pygame.key.get_pressed()
         if key[pygame.K_LEFT]:
