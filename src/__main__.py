@@ -1,23 +1,11 @@
 import sys
 import pygame
 
+from levels import levels
+from gameobject import gameObject
+
 black = 0, 0, 0
 
-class gameObject(object):
-    def __init__(self, bitmap=None):
-        self.speed = [0, 0]
-
-        if bitmap:
-            self.image = pygame.image.load(bitmap)
-            self.rect = self.image.get_rect()
-
-    def move(self):
-        if self.rect:
-            self.rect = self.rect.move(self.speed)
-
-    def draw(self, screen):
-        if self.rect:
-            screen.blit(self.image, self.rect)
 
 def main():
     pygame.init()
@@ -28,6 +16,7 @@ def main():
 
     objects = []
     objects.append(gameObject('./art/ballGrey.png'))
+    objects.append(gameObject('./art/paddleBlu.png'))
 
     while True:
         for event in pygame.event.get():
