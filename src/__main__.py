@@ -1,6 +1,7 @@
 import sys
 import pygame
 
+import ball
 import levels
 from gameobject import gameObject
 
@@ -15,7 +16,8 @@ def main():
     screen = pygame.display.set_mode((640, 480))
 
     objects = []
-    objects.append(gameObject('./art/ballGrey.png', startpos=(320, 368)))
+    theBall = ball.Ball((336, 400))
+    objects.append(theBall)
     
     paddle = gameObject('./art/paddleBlu.png', startpos=(320, 440))
     objects.append(paddle)
@@ -37,6 +39,7 @@ def main():
             paddle.move([3, 0])
             paddle.rect.x = min(paddle.rect.x, 503)
 
+        theBall.move(paddle)
         for obj in objects:
             obj.draw(screen)
 
