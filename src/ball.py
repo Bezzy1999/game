@@ -16,7 +16,7 @@ class Ball(gameobject.gameObject):
             super().move(self.speed)
         else:
             self.rect.x = paddle.rect.x + 42
-            self.rect.y = paddle.rect.y - 22
+            self.rect.y = paddle.rect.y - 40
 
         key = pygame.key.get_pressed()
         if key[pygame.K_SPACE] and not self.in_play:

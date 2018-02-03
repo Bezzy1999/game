@@ -3,6 +3,7 @@ import pygame
 
 import ball
 import levels
+import collide
 from gameobject import gameObject
 
 black = 0, 0, 0
@@ -40,6 +41,9 @@ def main():
             paddle.rect.x = min(paddle.rect.x, 503)
 
         theBall.move(paddle)
+
+        collide.check(theBall, level, paddle)
+
         for obj in objects:
             obj.draw(screen)
 
